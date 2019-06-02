@@ -7,7 +7,7 @@ const rnd =(...args)=> {
 
   if (args.length == 1) {             // one argument cases...
 
-    if (typeof arg1 == 'number')      // random integer from 0 to n-1
+    if (typeof arg1 == 'number')      /// random integer from 0 to n-1
       return Math.floor( Math.random() * arg1 )
 
     if ( Array.isArray(arg1) )        // random array item
@@ -21,13 +21,13 @@ const rnd =(...args)=> {
 
     if (typeof arg1 == 'string') {
 
-      if ( arg1.match( /^.-.$/ ) )    // random character in given range
+      if ( arg1.match( /^.-.$/ ) )    /// random character in given range
         return String.fromCharCode(rnd(arg1.charCodeAt(0), arg1.charCodeAt(2)) )
 
       return formatDatetime( rnd(Date), arg1 )  // preformatted random datetime
     }
 
-    // random object key with specific probability value
+    // random object key with specific probability weight value
     if (typeof arg1 == 'object') {
       const max = Object.values(arg1).reduce( (sum, num)=> sum + num ),
             entries = Object.entries(arg1)
@@ -40,10 +40,10 @@ const rnd =(...args)=> {
 
   if (args.length==2) {             // two arguments cases...
 
-    if (arg2 == '%')        // random true/false with given probability of true
+    if (arg2 == '%')      // random 1 or 0 with given probability of 1 for true
       return Number(rnd(1, 100) <= arg1)
 
-    // random integer from minNumber to maxNumber
+    /// random integer from minNumber to maxNumber
     if (typeof arg1=='number' && typeof arg2=='number') {
       const [min, max] =  arg1 < arg2?  [arg1, arg2]  :  [arg2, arg1]
       return Math.floor(min+(max-min+1)*Math.random())
@@ -108,7 +108,7 @@ const rnd =(...args)=> {
     return makeArr( arg3, ()=> rnd(arg1, arg2) )
   }
 
-  return Math.random()  // if there are no valid parameters treat as Math.random
+  return Math.random()  /// if there are no valid parameters treat as Math.random
 }
 
 // examples:
