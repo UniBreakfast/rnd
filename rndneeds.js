@@ -1,5 +1,6 @@
 
 
+
 // returns a sequence of integers, misses some if density < 100
 const integers = (start, length, density=100) => {
   for (var arr = [], num = start;  arr.length < length;  num++) {
@@ -7,6 +8,8 @@ const integers = (start, length, density=100) => {
   return arr
 }
 
+
+// without next function rnd function will fail to make (some) arrays of values
 
 // makes an array by using the given function,
 const makeArr = (length, func, distinct, persist) => {
@@ -25,6 +28,8 @@ const makeArr = (length, func, distinct, persist) => {
   } )
 }
 
+
+// without next three functions rnd function will fail to work on dates
 
 // adds the corresponding letters to the number (useful for dates etc.)
 const nth = (num) => {
@@ -51,7 +56,10 @@ const formatDatetime = (datetime, format) => {
   const [YYYY, MM, DD, HH, mm, ss] = datetime.split(/[- :]/)
 
   return format.replace('YYYY', YYYY).replace('YY', YYYY.slice(2))
-    .replace('Month', months[MM-1]).replace('month', monthShorts[MM-1])
+    .replace('Month', ["January","February","March","April","May","June","July",
+                    "August","September","October","November","December"][MM-1])
+    .replace('month', ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep",
+                    "Oct","Nov","Dec"][MM-1])
     .replace('MM', MM).replace('DDth', nth(DD)).replace('DD', DD)
     .replace('HH', HH).replace('mm', mm).replace('ss', ss)
 }

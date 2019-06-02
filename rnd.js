@@ -1,7 +1,7 @@
-// "swiss army knife" random function - result completely depends on parameters
+// "swiss-army-knife" random function - result completely depends on parameters
 const rnd =(...args)=> {
   // just for fun stats - counts how many times the rnd function ran total
-  rnd.counter = 1 + (rnd.counter || 0)
+  rnd.counter = 1 + (rnd.counter || 0)    // comment this out for performance
 
   const [arg1, arg2, arg3] = args
 
@@ -57,7 +57,6 @@ const rnd =(...args)=> {
 
     if (arg2 instanceof Date)  // random date between two dates (Date instances)
       return standartDatetime( new Date( rnd(arg1.getTime(), arg2.getTime()) ) )
-
 
     if (typeof arg2=='string') {  // like 'lower', 'higher', 'center', 'average'
 
