@@ -13,10 +13,10 @@ const rnd =(...args)=> {
     if ( Array.isArray(arg1) )        // random array item
       return arg1[ rnd(arg1.length) ]
 
-    if (arg1 == Date)   // random datetime between 1970 and now, standardized
+    if (arg1 == Date)   /// random datetime between 1970 and now, standardized
       return standartDatetime(new Date( rnd(Date.now()) ))
 
-    if (arg1 instanceof Date)         // random datetime between then and now
+    if (arg1 instanceof Date)         /// random datetime between then and now
       return standartDatetime(new Date( rnd(arg1.getTime(), Date.now()) ))
 
     if (typeof arg1 == 'string') {
@@ -55,7 +55,7 @@ const rnd =(...args)=> {
     if (Array.isArray(arg2))   // string pair of random values from two arrays
       return rnd(arg1)+' '+rnd(arg2)
 
-    if (arg2 instanceof Date)  // random date between two dates (Date instances)
+    if (arg2 instanceof Date)  /// random date between two dates (Date instances)
       return standartDatetime( new Date( rnd(arg1.getTime(), arg2.getTime()) ) )
 
     if (typeof arg2=='string') {  // like 'lower', 'higher', 'center', 'average'
