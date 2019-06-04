@@ -2,19 +2,21 @@
 
 The ```rnd(...)``` is the one function for multiple cases/situations I needed a solution for to get the appropriate random values or arrays of them.
 
+
 ## Table of Contents:
 
   * [Installation](#installation)
   * [Usage](#usage)
-    * [shorthand for Math.random()](#example-0)
-    * [random integer](#example-1)
-    * [random character from a range](#example-2)
-    * [random date](#example-3)
-    * [random array element](#example-4)
-    * [random object key by weight](#example-5)
+    * [shorthand for Math.random()](#example-0---mathrandom-shorthand)
+    * [random integer](#example-group-1---integers)
+    * [random character from a range](#example-group-2---characters)
+    * [random date](#example-group-3---dates)
+    * [random array element](#example-group-4---array-elements)
+    * [random object key by weight](#example-group-5---object-property-names)
   * [Contributing](#contributing)
   * [Credits](#credits)
   * [License](#license)
+
 
 ## Installation:
 
@@ -24,6 +26,7 @@ to your html if it suits you.
 Or you may include it from github directly with
 ```<script src="https://raw.githubusercontent.com/UniBreakfast/rnd/master/rnd.js">```
 Otherwise you are probably don't need instructions to **```import```** a one-function js file. And do the same for ```rndneeds.js``` if you're planning to use ```rnd(...)``` for dates or generation of arrays of random values at one go.
+
 
 ## Usage:
 
@@ -35,6 +38,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
     > rnd()
     // 0.06598564762879255  - random something like that
   ```
+
 
 ### Example group 1 - Integers:
 
@@ -50,6 +54,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
     > rnd(18, 60)
     // 36  - something like that (but it could be 18 or 60 just as well)
   ```
+
 
 ### Example group 2 - Characters:
 
@@ -71,6 +76,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
     > rnd("ऄ-ह")
     // "ळ"  - something like that (but it could be ऄ or ह just as well)
   ```
+
 
 ### Example group 3 - Dates:
 
@@ -116,6 +122,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
     // "2007-02-03 17:43:24"  - random something like that
   ```
 
+
 ### Example group 4 - Array elements:
 
   To get random array element just pass the array as a single argument
@@ -154,106 +161,161 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
 
   Where keys (object properties) should be strings (if they are not valid identifiers wrap them in quotes) and values should be integers. In this example they sum up into 100, but it isn't necessary, any numbers would do, as long as they are integers.
 
-  Good case I had was when I had an object of cities and towns of my country with corresponding populations like ```{Kyiv: 2709000, Kharkiv: 146000, Dnipro: 1050000, ... and other 507 of them }``` and I needed to generate random origin of mock-user with realistic probability.
+  Good case I had was with an object with cities and towns of my country as keys and corresponding population as values like this ```{Kyiv: 2709000, Kharkiv: 146000, Dnipro: 1050000, ... and other 507 of them }``` and I needed to generate random origin of mock-user with realistic probability.
 
 
-### Example group X - GROUP_NAME:
+### Example group 6 - Boolean with probability:
 
-  Text before example
-
-  ```js
-    > rnd
-    // ""  - random something like that
-  ```
-
-  Text after example
-
-  Text before example
+  If you need a random simple answer Yes or No (true/false, 1 or 0) you can pass the desired probability percentage as a parameter like that
 
   ```js
-    > rnd
-    // ""  - random something like that
+    > rnd(85,'%')
+    // 1  - randomly 0 (falsy) or 1 (truthy)
   ```
 
-  Text after example
-
-  Text before example
+  or like that
 
   ```js
-    > rnd
-    // ""  - random something like that
+    > rnd('14%')
+    // 0  - randomly 0 (falsy) or 1 (truthy)
   ```
 
-  Text after example
-
-
-### Example group X - GROUP_NAME:
-
-  Text before example
+  Another hacky way to get random truthy or falsy value with desired probability would be just
 
   ```js
-    > rnd
-    // ""  - random something like that
+    > rnd(4)
+    // 2  - random integer from 0 to 3
   ```
 
-  Text after example
+  which for this use-case would simply mean "falsy 1 time out of 4" or the same as ```rnd('75%')```
 
-  Text before example
+  Or, for example,
 
   ```js
-    > rnd
-    // ""  - random something like that
+    > !rnd(10000)
+    // false  - inverted boolean from random integer from 0 to 9999
   ```
 
-  Text after example
+  which for this use-case would simply mean "truthy 1 time out of 10000" or the same as 0,01% probability of success. And trust me, it would give the true as a result just around hundred times in a million.
 
-  Text before example
+
+### Example group 7 - Predictably altered probability:
+
+  If you need to "tilt" the probability towards the lower or higher numbers use 'lower' or 'higher' as a second parameter
 
   ```js
-    > rnd
-    // ""  - random something like that
+    > rnd(100, 'higher')
+    // 93  - random integer with a chance of being produced linearly increasing
+    //        from 0 to 99
   ```
 
-  Text after example
-
-
-### Example group X - GROUP_NAME:
-
-  Text before example
+  You can also 'tilt' the randomness when you ask for a random array item
 
   ```js
-    > rnd
-    // ""  - random something like that
+    > animals = ['mouse', 'rat', 'cat', 'dog', 'wolf', 'bear', 'tiger']
+    > rnd(animals, 'lower')
+    // "rat"  - random array element but the chance is linearly decreasing
+    //           towards the end of the list
   ```
 
-  Text after example
+  You may use the 'center' or 'average' as well if you need to alter the probability towards the middle linearly or quadratically respectively.
 
-  Text before example
+  You may also use the same four words ('lower', 'center', 'higher' or 'average') as a third parameter if you need to specify the range from one number to another
 
   ```js
-    > rnd
-    // ""  - random something like that
+    > rnd(11, 34, 'center')
+    // 21  - random integer between 11 and 34 with a chance of being produced
+    //        linearly increasing towards the middle of the range
   ```
 
-  Text after example
 
-  Text before example
+### Example group 8 - Make arrays of results:
+
+  In many cases you may get an array of random results simply by adding an argument - integer that would be the length of the results array like that
 
   ```js
-    > rnd
-    // ""  - random something like that
+    > rnd(Date, 4)
+    // ["1977-12-13 00:40:26", "2015-04-24 23:30:42",
+    //  "1984-07-14 09:36:42", "1992-11-20 14:15:17"] - 4 random dates
   ```
 
-  Text after example
+  or
+
+  ```js
+    > rnd('ഒ-ഹ', 20)
+    // ["ഘ", "ഞ", "മ", "ര", "ഩ", "ബ", "ഓ", "ഞ", "ഒ", "ഥ", "ത", "ഩ", "ദ", "ച", "ള", "ധ", "ഭ", "ഴ", "ദ", "ല"]  - 20 random Malayan characters
+  ```
+
+  or
+
+  ```js
+    > names = ['Jacob', 'Jace', 'Jamal', 'Jennifer', 'Jasmine', 'Julia']
+    > surnames = ['Jackson', 'Jenkins', 'Jefferson', 'Juarez', 'Jensen']
+    > rnd(names, surnames, 6)
+    // ["Jacob Jefferson", "Jace Juarez", "Jasmine Jensen",
+    //  "Jacob Juarez", "Jasmine Jenkins", "Jacob Jenkins"]  - 6 random pairs
+  ```
+
+  or
+
+  ```js
+    > rnd({a:15, b:7, c:3, d:1}, rnd(20))
+    // ["d", "b", "a", "a", "c", "b", "b", "a", "b", "a", "a", "b", "a", "a",
+    //  "a", "a", "a", "c"]  - 18 random letters with desired frequency
+  ```
+
+  And if you need to use a combination of parameters that doesn't produce the array of results when a number argument added last, use the bonus ```makeArr(length, fn)``` function for that
+
+  ```js
+    > makeArr( 10000, ()=> rnd(-25, 25, 'average') )
+    // "[13, 18, 21, 1, 16, -6, 0, 22, -23, 16, -13, -3, 2, 10, 3, 16, -14, 9, -11, -18, -15, -10, 9, 3, 0, 17, 6, 21, -16, -17, 3, 16, -12, 20, 11, 7, 7, -5, 5, 7, -9, 5, 4, -9, -23, 15, -6, 10, -5, -10, 23, -20, 9, 23, 15, 12, 4, 8, 8, 25, -15, 6, -2, -6, 16, -19, 12, 3, 9, 11, -10, -15, -19, 3, -20, 12, -23, 14, -24, 11, 10, 23, -15, 17, 15, -10, 9, -19, 5, -15, 9, -12, -6, -24, 25, 10, 8, 22, 9, 10, ...]"  - ten thousands of random integers between -25 and 25 with the higher probability of producing numbers that are closer to the average - zero
+  ```
+
+  This particular example produces the array of numbers with a frequency spread like that
+  ![number of results grouped and counted by value](https://raw.githubusercontent.com/UniBreakfast/rnd/master/Graph.PNG)
+
+  Of course you can use that ```makeArr(length, fn)``` function to produce arrays of values made by any function, not just as simple as shown above.
+
+
+### Example group 9 - Preformatted dates:
+
+  If you need to produce a non-specific random date with a certain format you may use the format string as a single argument
+
+  ```js
+    > rnd('the Month DDth, year YYYY')
+    // "the August 16th, year 2007" - something like that
+  ```
+
+  or
+
+  ```js
+    > rnd('month DD, HH:MM')
+    // "Oct 23, 13:10" - something like that
+  ```
+
+  And if you need to get the formatted datetime string with other ```rnd(...)``` calls you can use another bonus function ```formatDatetime(datetime, format)``` like that
+
+  ```js
+    > formatDatetime( rnd(new Date("1997-10"), new Date("2001-10")),
+                      'DD.MM.YYYY')
+    // "27.08.2000" - something like that
+  ```
+
+  The supported formatting tokens are:
+    * YYYY - 4-digit year like 1962
+    * YY   - 2-digit year like 99
+    * MM   -
 
 
 ## Contributing:
 
 Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to my work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors.
 
+
 ## Credits:
 
 Well, "it was me all along". For now.
+
 
 ## License:
 

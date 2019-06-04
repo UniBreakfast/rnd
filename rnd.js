@@ -10,7 +10,7 @@ const rnd =(...args)=> {
     if (typeof arg1 == 'number')      /// random integer from 0 to n-1
       return Math.floor( Math.random() * arg1 )
 
-    if ( Array.isArray(arg1) )        // random array item
+    if ( Array.isArray(arg1) )        /// random array item
       return arg1[ rnd(arg1.length) ]
 
     if (arg1 == Date)   /// random datetime between 1970 and now, standardized
@@ -24,10 +24,14 @@ const rnd =(...args)=> {
       if ( arg1.match( /^.-.$/ ) )    /// random character in given range
         return String.fromCharCode(rnd(arg1.charCodeAt(0), arg1.charCodeAt(2)) )
 
+      /// random 1 or 0 with given probability of 1 for true (like "85%")
+      if ( arg1.match( /^\d{1,3}%$/ ) )
+        return Number(rnd(1, 100) <= parseInt(arg1))
+
       return formatDatetime( rnd(Date), arg1 )  // preformatted random datetime
     }
 
-    // random object key with specific probability weight value
+    /// random object key with specific probability weight value
     if (typeof arg1 == 'object') {
       const max = Object.values(arg1).reduce( (sum, num)=> sum + num ),
             entries = Object.entries(arg1)
@@ -38,9 +42,9 @@ const rnd =(...args)=> {
     }
   }
 
-  if (args.length==2) {             // two arguments cases...
+  if (args.length==2) {             /// two arguments cases...
 
-    if (arg2 == '%')      // random 1 or 0 with given probability of 1 for true
+    if (arg2 == '%')      /// random 1 or 0 with given probability of 1 for true
       return Number(rnd(1, 100) <= arg1)
 
     /// random integer from minNumber to maxNumber
@@ -49,29 +53,29 @@ const rnd =(...args)=> {
       return Math.floor(min+(max-min+1)*Math.random())
     }
 
-    if (typeof arg2=='number') // an array of rnd(arg1) items with length = arg2
+    if (typeof arg2=='number') /// an array of rnd(arg1) items with length = arg2
       return makeArr( arg2, ()=> rnd(arg1) )
 
-    if (Array.isArray(arg2))   // string pair of random values from two arrays
+    if (Array.isArray(arg2))   /// string pair of random values from two arrays
       return rnd(arg1)+' '+rnd(arg2)
 
     if (arg2 instanceof Date)  /// random date between two dates (Date instances)
       return standartDatetime( new Date( rnd(arg1.getTime(), arg2.getTime()) ) )
 
-    if (typeof arg2=='string') {  // like 'lower', 'higher', 'center', 'average'
+    if (typeof arg2=='string') {  /// like 'lower', 'higher', 'center', 'average'
 
-      // random integer with probability towards lower, higher, center, average
+      /// random integer with probability towards lower, higher, center, average
       if (typeof arg1=='number')  return rnd(0, arg1-1, arg2)
 
-      // random array item with lower, higher, medium or average index preferred
+      /// random array item with lower, higher, medium or average index preferred
       if (Array.isArray(arg1))  return arg1[rnd(0, arg1.length-1, arg2)]
     }
   }
 
   if (args.length==3) {             // three arguments cases...
 
-    if (arg3=='lower') {                      // random integer with linear
-                // decrease of probability from minNumber towards maxNumber
+    if (arg3=='lower') {                      /// random integer with linear
+                /// decrease of probability from minNumber towards maxNumber
       const min = Math.min(arg1, arg2) - 1,  // to normalize edge cases
             max = Math.max(arg1, arg2) + 1
 
@@ -80,8 +84,8 @@ const rnd =(...args)=> {
       return num
     }
 
-    if (arg3=='higher') {                      // random integer with linear
-                 // increase of probability from minNumber towards maxNumber
+    if (arg3=='higher') {                      /// random integer with linear
+                 /// increase of probability from minNumber towards maxNumber
       const min = Math.min(arg1, arg2) - 1,  // to normalize edge cases
             max = Math.max(arg1, arg2) + 1
 
@@ -90,21 +94,21 @@ const rnd =(...args)=> {
       return num
     }
 
-    if (arg3=='center') {              // random integer with linear increase
-         // of probability towards the center between minNumber and maxNumber
+    if (arg3=='center') {              /// random integer with linear increase
+         /// of probability towards the center between minNumber and maxNumber
       const  min1 = Math.floor( arg1 / 2 ),   min2 = arg1 - min1,
              max1 = Math.floor( arg2 / 2 ),   max2 = arg2 - max1
       return  rnd(min1, max1) + rnd(min2, max2)
     }
 
-    if (arg3=='average') {          // random integer with quadratic increase
-         // of probability towards the center between minNumber and maxNumber
+    if (arg3=='average') {          /// random integer with quadratic increase
+         /// of probability towards the center between minNumber and maxNumber
       return  rnd( rnd(arg1, arg2), rnd(arg1, arg2) )
     }
 
-    if (!arg3)  return rnd(arg1, arg2)  // foolproof for "falsey" values
+    if (!arg3)  return rnd(arg1, arg2)  // foolproof for "falsey" arg3
 
-    // otherwise it's just a number of rnd(arg1,arg2) items in the array
+    /// otherwise it's just a number of rnd(arg1,arg2) items in the array
     return makeArr( arg3, ()=> rnd(arg1, arg2) )
   }
 
