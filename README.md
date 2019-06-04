@@ -8,15 +8,16 @@ The ```rnd(...)``` is the one function for multiple cases/situations I needed a 
   * [Installation](#installation)
   * [Usage](#usage)
     * [shorthand for Math.random()](#example-0---mathrandom-shorthand)
-    * [random integer](#example-group-1---integers)
-    * [random character from a range](#example-group-2---characters)
-    * [random date](#example-group-3---dates)
-    * [random array element](#example-group-4---array-elements)
-    * [random object key by weight](#example-group-5---object-property-names)
-    * [random true/false by percentage](#example-group-6---boolean-with-probability)
-    * [predictably altered random](#example-group-7---predictably-altered-probability)
-    * [arrays of random results](#example-group-8---make-arrays-of-results)
-    * [preformatted dates](#example-group-9---preformatted-dates)
+
+    1 [random integer](#example-group-1---integers)
+    1 [random character from a range](#example-group-2---characters)
+    1 [random date](#example-group-3---dates)
+    1 [random array element](#example-group-4---array-elements)
+    1 [random object key by weight](#example-group-5---object-property-names)
+    1 [random true/false by percentage](#example-group-6---boolean-with-probability)
+    1 [predictably altered random](#example-group-7---predictably-altered-probability)
+    1 [arrays of random results](#example-group-8---make-arrays-of-results)
+    1 [preformatted dates](#example-group-9---preformatted-dates)
   * [Contributing](#contributing)
   * [Credits](#credits)
   * [License](#license)
@@ -314,9 +315,15 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   ```
 
   The supported formatting tokens are:
-    * YYYY - 4-digit year like 1962
-    * YY   - 2-digit year like 99
-    * MM   -
+
+    * YYYY  - 4-digit year like 1962
+    * YY    - 2-digit year like 99
+    * MM    - 2-digit month like 12
+    * Month - month name like January
+    * month - short month name like Feb
+    * DD    - 2-digit date like 08
+    * DDth  - up to 2digit date like 7th, 21st etc
+    * HH, MM, SS - 2-digit hours, minutes and seconds
 
 
 ## Contributing:
