@@ -7,17 +7,17 @@ The ```rnd(...)``` is the one function for multiple cases/situations I needed a 
 
   * [Installation](#installation)
   * [Usage](#usage)
-    1 [shorthand for Math.random()](#example-1---mathrandom-shorthand)
+    * [shorthand for Math.random()](#example-0---mathrandom-shorthand)
 
-    1 [random integer](#example-group-2---integers)
-    1 [random character from a range](#example-group-3---characters)
-    1 [random date](#example-group-4---dates)
-    1 [random array element](#example-group-5---array-elements)
-    1 [random object key by weight](#example-group-6---object-property-names)
-    1 [random true/false by percentage](#example-group-7---boolean-with-probability)
-    1 [predictably altered random](#example-group-8---predictably-altered-probability)
-    1 [arrays of random results](#example-group-9---make-arrays-of-results)
-    1 [preformatted dates](#example-group-10---preformatted-dates)
+    1. [random integer](#example-group-1---integers)
+    1. [random character from a range](#example-group-2---characters)
+    1. [random date](#example-group-3---dates)
+    1. [random array element](#example-group-4---array-elements)
+    1. [random object key by weight](#example-group-5---object-property-names)
+    1. [random true/false by percentage](#example-group-6---boolean-with-probability)
+    1. [predictably altered random](#example-group-7---predictably-altered-probability)
+    1. [arrays of random results](#example-group-8---make-arrays-of-results)
+    1. [preformatted dates](#example-group-9---preformatted-dates)
   * [Contributing](#contributing)
   * [Credits](#credits)
   * [License](#license)
@@ -35,7 +35,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
 
 ## Usage:
 
-### Example 1 - Math.random() shorthand:
+### Example 0 - Math.random() shorthand:
 
   The simplest usage is just a shorthand for ```Math.random()``` and result is similar (cause ```Math.random``` used internally here and in all other cases too).
 
@@ -45,7 +45,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   ```
 
 
-### Example group 2 - Integers:
+### Example group 1 - Integers:
 
   If you need a random integer from zero and up to, say, 77 you need to
 
@@ -61,7 +61,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   ```
 
 
-### Example group 3 - Characters:
+### Example group 2 - Characters:
 
   If you need a random letter (or any character for that matter) from, say, A to Z
 
@@ -83,7 +83,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   ```
 
 
-### Example group 4 - Dates:
+### Example group 3 - Dates:
 
   If you just need a random date and time in an ISO-standard format pass the ```Date``` constructor-function itself like this
 
@@ -128,7 +128,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   ```
 
 
-### Example group 5 - Array elements:
+### Example group 4 - Array elements:
 
   To get random array element just pass the array as a single argument
 
@@ -151,7 +151,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
 
   If you try that with the arrays containing something other than strings it'll work by naively converting selected elements to strings.
 
-### Example group 6 - Object property names:
+### Example group 5 - Object property names:
 
   This one is good to randomly choose one of the multitude of string values with probability weights. So in order to do that you need and object like that
 
@@ -169,7 +169,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   Good case I had was with an object with cities and towns of my country as keys and corresponding population as values like this ```{Kyiv: 2709000, Kharkiv: 146000, Dnipro: 1050000, ... and other 507 of them }``` and I needed to generate random origin of mock-user with realistic probability.
 
 
-### Example group 7 - Boolean with probability:
+### Example group 6 - Boolean with probability:
 
   If you need a random simple answer Yes or No (true/false, 1 or 0) you can pass the desired probability percentage as a parameter like that
 
@@ -204,7 +204,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   which for this use-case would simply mean "truthy 1 time out of 10000" or the same as 0,01% probability of success. And trust me, it would give the true as a result just around hundred times in a million.
 
 
-### Example group 8 - Predictably altered probability:
+### Example group 7 - Predictably altered probability:
 
   If you need to "tilt" the probability towards the lower or higher numbers use 'lower' or 'higher' as a second parameter
 
@@ -234,7 +234,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   ```
 
 
-### Example group 9 - Make arrays of results:
+### Example group 8 - Make arrays of results:
 
   In many cases you may get an array of random results simply by adding an argument - integer that would be the length of the results array like that
 
@@ -290,7 +290,7 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
   Of course you can use that ```makeArr(length, fn)``` function to produce arrays of values made by any function, not just as simple as shown above.
 
 
-### Example group 10 - Preformatted dates:
+### Example group 9 - Preformatted dates:
 
   If you need to produce a non-specific random date with a certain format you may use the format string as a single argument
 
