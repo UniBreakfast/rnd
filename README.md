@@ -13,6 +13,10 @@ The ```rnd(...)``` is the one function for multiple cases/situations I needed a 
     * [random date](#example-group-3---dates)
     * [random array element](#example-group-4---array-elements)
     * [random object key by weight](#example-group-5---object-property-names)
+    * [random true/false by percentage](#example-group-6---boolean-with-probability)
+    * [predictably altered random](#example-group-7---predictably-altered-probability)
+    * [arrays of random results](#example-group-8---make-arrays-of-results)
+    * [preformatted dates](#example-group-9---preformatted-dates)
   * [Contributing](#contributing)
   * [Credits](#credits)
   * [License](#license)
@@ -243,7 +247,8 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
 
   ```js
     > rnd('ഒ-ഹ', 20)
-    // ["ഘ", "ഞ", "മ", "ര", "ഩ", "ബ", "ഓ", "ഞ", "ഒ", "ഥ", "ത", "ഩ", "ദ", "ച", "ള", "ധ", "ഭ", "ഴ", "ദ", "ല"]  - 20 random Malayan characters
+    // ["ഘ", "ഞ", "മ", "ര", "ഩ", "ബ", "ഓ", "ഞ", "ഒ", "ഥ", "ത", "ഩ",
+    //  "ദ", "ച", "ള", "ധ", "ഭ", "ഴ", "ദ", "ല"]  - 20 random Malayan characters
   ```
 
   or
@@ -268,11 +273,18 @@ Otherwise you are probably don't need instructions to **```import```** a one-fun
 
   ```js
     > makeArr( 10000, ()=> rnd(-25, 25, 'average') )
-    // "[13, 18, 21, 1, 16, -6, 0, 22, -23, 16, -13, -3, 2, 10, 3, 16, -14, 9, -11, -18, -15, -10, 9, 3, 0, 17, 6, 21, -16, -17, 3, 16, -12, 20, 11, 7, 7, -5, 5, 7, -9, 5, 4, -9, -23, 15, -6, 10, -5, -10, 23, -20, 9, 23, 15, 12, 4, 8, 8, 25, -15, 6, -2, -6, 16, -19, 12, 3, 9, 11, -10, -15, -19, 3, -20, 12, -23, 14, -24, 11, 10, 23, -15, 17, 15, -10, 9, -19, 5, -15, 9, -12, -6, -24, 25, 10, 8, 22, 9, 10, ...]"  - ten thousands of random integers between -25 and 25 with the higher probability of producing numbers that are closer to the average - zero
+    // "[13, 18, 21, 1, 16, -6, 0, 22, -23, 16, -13, -3, 2, 10, 3, 16, -14, 9,
+    //  -11, -18, -15, -10, 9, 3, 0, 17, 6, 21, -16, -17, 3, 16, -12, 20, 11, 7,
+    //  7, -5, 5, 7, -9, 5, 4, -9, -23, 15, -6, 10, -5, -10, 23, -20, 9, 23, 15,
+    //  12, 4, 8, 8, 25, -15, 6, -2, -6, 16, -19, 12, 3, 9, 11, -10, -15, 19, 3,
+    //  -20, 12, -23, 14, -24, 11, 10, 23, -15, 17, 15, -10, 9, -19, 5, -15, 9,
+    //  -12, -6, -24, 25, 10, 8, 22, 9, 10, ...]"  - ten thousands of random
+    //  integers between -25 and 25 with the higher probability of producing
+    //  numbers that are closer to the average - zero
   ```
 
   This particular example produces the array of numbers with a frequency spread like that
-  ![number of results grouped and counted by value](https://raw.githubusercontent.com/UniBreakfast/rnd/master/Graph.PNG)
+  ![number of results grouped and counted by value](https://raw.githubusercontent.com/UniBreakfast/rnd/master/Graph01.PNG)
 
   Of course you can use that ```makeArr(length, fn)``` function to produce arrays of values made by any function, not just as simple as shown above.
 
