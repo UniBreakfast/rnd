@@ -26,11 +26,17 @@ The ```rnd(...)``` is the one function for multiple cases/situations I needed a 
 ## Installation:
 
 Take **```rnd.js```** and put it in your project's folder and add a
+
 ```<script src="rnd.js">```
+
 to your html if it suits you.
 Or you may include it from github directly with
+
 ```<script src="https://raw.githubusercontent.com/UniBreakfast/rnd/master/rnd.js">```
-Otherwise you are probably don't need instructions to **```import```** a one-function js file. And do the same for ```rndneeds.js``` if you're planning to use ```rnd(...)``` for dates or generation of arrays of random values at one go.
+
+And do the same for ```rndneeds.js``` if you're planning to use ```rnd(...)``` for dates or generation of arrays of random values at one go.
+
+And if you fancy import you probably don't need instructions to **```import```** a one-function js-file.
 
 
 ## Usage:
