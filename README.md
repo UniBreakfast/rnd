@@ -2,9 +2,6 @@
 
 The ```rnd(...)``` is the one function for multiple cases/situations I needed a solution for to get the appropriate random values or arrays of them.
 
-<style>
- ol {list-style-type: upper-roman}
-</style>
 ## Table of Contents:
 
   * [Installation](#installation)
