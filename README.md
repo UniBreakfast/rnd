@@ -158,7 +158,7 @@ And if you fancy import you probably don't need instructions to **```import```**
 
 ### Example group 5 - Object property names:
 
-  This one is good to randomly choose one of the multitude of string values with probability weights. So in order to do that you need and object like that
+  This one is good to randomly choose one of the multitude of string values with probability weights. So in order to do that you need an object like that
 
   ```js
     > statuses = {"never married": 26, married: 58, divorced: 10, widowed: 6}
