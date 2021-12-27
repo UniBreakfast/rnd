@@ -104,15 +104,15 @@ And if you fancy import you probably don't need instructions to **```import```**
   ```js
     > new Date(rnd(Date))
     // "Mon Jul 11 1994 18:34:49 GMT+0300 (Восточная Европа, летнее время)"
-    // - that was my output, yours probably won't be with Cyrillic in it
+    // - that was my output, yours probably won't have Cyrillic in it
   ```
 
   You can do that with the results of the rest of the cases in this example group as well.
 
-  To get a random date starting not from the 1970 but from some exact date, say, January 1, 2012 and up until your current time, pass a Date instance you need as a single argument
+  To get a random date starting not from the 1970 but from some exact date, say, January 1, 2012 and up until your current time, pass a Date instance you need to be the start point as a single argument
 
   ```js
-    > rnd(new Date("2012-01-01"))
+    > rnd(new Date('2012-01-01'))
     // or simply
     > rnd(new Date('2012'))
     // "2014-06-28 17:45:06"  - random something like that

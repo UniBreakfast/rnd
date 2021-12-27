@@ -22,7 +22,7 @@ const rnd = (...args) => {
     if (typeof arg1 == 'string') {
 
       if ( arg1.match( /^.-.$/ ) )    // random character in given range
-       return String.fromCharCode( rnd(arg1.charCodeAt(0), arg1.charCodeAt(2)) )
+        return String.fromCharCode( rnd(arg1.charCodeAt(0), arg1.charCodeAt(2)) )
 
       // random 1 or 0 with given probability of 1 for true (like "85%")
       if ( arg1.match( /^\d{1,3}%$/ ) )
