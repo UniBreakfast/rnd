@@ -1,2 +1,176 @@
-<script src=rndneeds.js></script>
-<script src=rnd.js></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="script.js" defer></script>
+  <script src="randFuncs.js"></script>
+</head>
+
+<body class="dark-theme">
+  <header>
+    <h1>Random Testing Playground</h1>
+
+    <button onclick="toggleDarkTheme()">
+      <span>go dark</span> <span class="dark">go light</span>
+    </button>
+  </header>
+
+  <main>
+    <ul class="showcase">
+      <li id="random">
+        <details>
+          <summary>
+            <h3>random() (from Math.random)</h3>
+          </summary>
+          <p>Returns a random fractional number from 0 to 1</p>
+          <div class="case">
+            <div class="in">
+              <h3>random()</h3>
+            </div>
+            <div class="do">
+              <button class="gen-btn">Call</button>
+              <label><input type="checkbox"> continiously</label>
+            </div>
+            <div class="out">
+              <textarea></textarea>
+              <div class="buttons">
+                <select>
+                  <optgroup label="JavaScript">
+                    <option value="number">JS 12000</option>
+                    <option value="separate">JS 12_000</option>
+                    <option value="exponent">JS 1.2e4</option>
+                  </optgroup>
+                  <optgroup label="JSON">
+                    <option value="">tight JSON</option>
+                    <option value="">JSON, 2 spaces</option>
+                    <option value="">JSON, 4 spaces</option>
+                  </optgroup>
+                  <optgroup label="Plain text">
+                    <option value="">text</option>
+                    <option value="">pseudotable</option>
+                  </optgroup>
+                  <optgroup label="CSV">
+                    <option value="">CSV</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+          </div>
+          <dl class="stats">
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+          </dl>
+        </details>
+      </li>
+
+      <li>
+        <details>
+          <summary>
+            <h3>genRandIntFrom0(limitInt)</h3>
+          </summary>
+          <p>Takes an integer (maximum reliable integer if the argument isn't passed). Returns a random integer between 0 (including) and passed integer (not including).</p>
+          <div class="case">
+            <div class="in"></div>
+            <div class="do">
+              <div class="gen-btn"></div>
+              <label for=""><input type="checkbox" name="" id=""></label>
+            </div>
+            <div class="out">
+              <textarea name="" id="" cols="30" rows="10"></textarea>
+              <div class="buttons">
+                <select name="" id="">
+                  <optgroup>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                  </optgroup>
+                  <optgroup>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                  </optgroup>
+                  <optgroup>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+          </div>
+          <dl class="stats">
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+            <div class="stat">
+              <dt></dt>
+              <dd></dd>
+            </div>
+          </dl>
+        </details>
+      </li>
+
+    </ul>
+  </main>
+
+  <footer>
+    <h2></h2>
+    <button onclick="toggleDarkTheme()">
+      <span>go dark</span> <span class="dark">go light</span>
+    </button>
+  </footer>
+
+  <script>
+    document.currentScript.remove()
+    document.querySelector('footer>h2').innerText = document.title =
+      document.querySelector('h1').innerText
+  </script>
+</body>
+
+</html>

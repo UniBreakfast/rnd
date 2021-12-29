@@ -1,0 +1,212 @@
+.dark-theme {
+  --normal-color: hsl(0, 0%, 80%);
+  --normal-back-color: hsl(0, 0%, 0%);
+  --low-contrast-back-color: hsl(0, 0%, 13%);
+  --avg-contrast-back-color: hsl(0, 0%, 20%);
+}
+
+.dark-theme [type="checkbox"] {
+  filter: grayscale(1) invert(1);
+}
+
+:root, [type="checkbox"] {
+  --normal-color: hsl(0, 0%, 20%);
+  --normal-back-color: hsl(0, 0%, 99%);
+  --low-contrast-back-color: hsl(0, 0%, 96%);
+  --avg-contrast-back-color: hsl(0, 0%, 85%);
+  --error-color: hsl(0, 80%, 60%);
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  overflow: hidden;
+}
+
+body, h1, h2, h3, h4, h5, h6, fieldset, summary, textarea, input, button, select, option, ul, li, tr, th, td {
+  color: var(--normal-color);
+  transition: .3s, color 1s, background-color 1s;
+}
+
+body, fieldset, summary, textarea, input, button, select, option, ul, li, tr, th, td {
+  font: 20px Trebuchet MS, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--normal-back-color);
+  padding: 20px;
+  /* height: 100vh; */
+  transition: .3s, transform .5s linear, color 1s, background-color 1s;
+}
+
+button {
+  border: 2px solid var(--normal-color);
+  background-color: var(--avg-contrast-back-color);
+  padding: 5px 20px;
+  margin: 5px 15px;
+  border-radius: 10px;
+  outline: none;
+}
+
+button:hover {
+  box-shadow: inset 0 0 9px 1px var(--normal-color),
+              0 0 0 0 var(--normal-back-color),
+              0 0 0 0 var(--normal-color);
+}
+
+button:focus {
+  box-shadow: inset 0 0 0 0 var(--normal-color),
+              0 0 6px 8px var(--normal-back-color),
+              0 0 8px 8px var(--normal-color);
+}
+
+button:focus:hover {
+  box-shadow: inset 0 0 9px 1px var(--normal-color),
+              0 0 6px 8px var(--normal-back-color),
+              0 0 8px 8px var(--normal-color);
+}
+
+button:active {
+  color: var(--normal-back-color);
+  background-color: var(--normal-color);
+}
+
+textarea {
+  resize: none;
+}
+
+input, textarea, select, select>option {
+  padding: 5px 15px;
+  text-align: center;
+  border: 2px solid var(--normal-color);
+  background-color: var(--normal-back-color);
+  border-radius: 5px;
+  outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 6px 8px var(--normal-back-color),
+              0 0 8px 8px var(--normal-color);
+}
+
+[type="checkbox"] {
+  filter: grayscale(1);
+}
+
+label>[type="checkbox"] {
+  margin-right: 14px;
+}
+
+optgroup {
+  text-align: left;
+  opacity: 0.5;
+  font-weight: normal;
+}
+
+summary {
+  border-radius: 10px;
+}
+
+summary:focus {
+  outline: none;
+  box-shadow: 0 0 4px 1px var(--normal-back-color),
+              0 0 4px 1px var(--normal-back-color) inset;
+}
+
+ul {
+  list-style: none;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  gap: 30px;
+}
+
+form>fieldset {
+  padding: 30px 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  border: 2px solid var(--normal-color);
+  background-color: var(--low-contrast-back-color);
+}
+
+form>fieldset>legend {
+  padding: 5px 10px;
+  margin-left: 30px;
+}
+
+form>fieldset>label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  gap: 20px;
+}
+
+main>header>h1 {
+  text-align: center;
+}
+
+main>section {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  gap: 30px;
+}
+
+buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px;
+}
+
+.scrollable {
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  flex-grow: 1;
+}
+
+th, td {
+  padding: 5px 15px;
+}
+
+tr:nth-child(even) {
+  background-color: var(--low-contrast-back-color);
+}
+
+:not(tbody)>tr {
+  background-color: var(--avg-contrast-back-color);
+}
+
+::-webkit-scrollbar {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 8px;
+  border: 2px solid var(--normal-color);
+  background-color: var(--avg-contrast-back-color);
+  border-radius: 10px;
+}
