@@ -54,6 +54,7 @@ for (const i in genBoxes) {
 
 function toggleDarkTheme() {
   document.body.classList.toggle('dark-theme')
+  localStorage.darkTheme = localStorage.darkTheme ? '' : 'true'
 }
 
 async function copyTextToClipboard(text) {

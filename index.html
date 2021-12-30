@@ -17,7 +17,7 @@
   <script src="randFuncs.js"></script>
 </head>
 
-<body class="dark-theme">
+<body hidden>
   <header>
     <h1>Random Testing Playground</h1>
 
@@ -185,6 +185,8 @@
 
   <script>
     document.currentScript.remove()
+    if (localStorage.darkTheme) document.body.classList.add('dark-theme')
+    document.body.hidden = false
     document.querySelector('footer>h2').innerText = document.title =
       document.querySelector('h1').innerText
   </script>
