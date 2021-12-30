@@ -47,7 +47,7 @@ body {
 button {
   border: 2px solid var(--normal-color);
   background-color: var(--avg-contrast-back-color);
-  padding: 5px 20px;
+  padding: 4px 20px 6px;
   margin: 5px 15px;
   border-radius: 10px;
   outline: none;
@@ -96,6 +96,7 @@ input:focus, textarea:focus, select:focus {
 
 [type="checkbox"] {
   filter: grayscale(1);
+  transform: scale(1.4);
 }
 
 label>[type="checkbox"] {
@@ -107,6 +108,7 @@ optgroup {
   opacity: 0.5;
   font-weight: normal;
 }
+
 
 summary {
   border-radius: 10px;

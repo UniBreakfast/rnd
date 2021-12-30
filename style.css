@@ -60,12 +60,20 @@ summary>h3 {
 }
 
 .case>.in {
+  font: 500 22px Fira Code, Courier New, Courier, monospace;
   width: 50%;
+  text-align: right;
 }
 
 .case>.in>h3 {
-  text-align: center;
   margin: 20px 0;
+  font-weight: 500;
+}
+
+.case>.in input {
+  font: 500 20px Fira Code, Courier New, Courier, monospace;
+  margin: 5px 15px;
+  width: 40%;
 }
 
 .case>.do {
@@ -81,4 +89,13 @@ summary>h3 {
   display: flex;
   width: 50%;
   gap: 15px;
+}
+
+.out>.buttons {
+  width: 220px;
+  text-align: justify;
+}
+
+.out>.buttons>* {
+  margin: 10px 2px;
 }

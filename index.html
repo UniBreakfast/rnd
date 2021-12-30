@@ -6,6 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap">
+
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="style.css">
 
@@ -35,7 +39,7 @@
               <h3>random()</h3>
             </div>
             <div class="do">
-              <button class="gen-btn">Call</button>
+              <button class="gen-btn">call</button>
               <label><input type="checkbox"> continiously</label>
             </div>
             <div class="out">
@@ -60,6 +64,10 @@
                     <option value="">CSV</option>
                   </optgroup>
                 </select>
+                <button class="copy-btn">copy</button>
+                <button class="clear-btn">clear</button>
+                <button class="prev-btn">previous</button>
+                <button class="next-btn">next</button>
               </div>
             </div>
           </div>
@@ -92,38 +100,47 @@
         </details>
       </li>
 
-      <li>
+      <li id="genRandIntFrom0">
         <details>
           <summary>
             <h3>genRandIntFrom0(limitInt)</h3>
           </summary>
           <p>Takes an integer (maximum reliable integer if the argument isn't passed). Returns a random integer between 0 (including) and passed integer (not including).</p>
           <div class="case">
-            <div class="in"></div>
+            <div class="in">
+              <h3>genRandIntFrom0(<span class="arg">?</span>)</h3>
+              <label>limitInt <input type="number" step="1"></label>
+            </div>
             <div class="do">
-              <div class="gen-btn"></div>
-              <label for=""><input type="checkbox" name="" id=""></label>
+              <button class="gen-btn">call</button>
+              <label><input type="checkbox"> continiously</label>
             </div>
             <div class="out">
-              <textarea name="" id="" cols="30" rows="10"></textarea>
+              <textarea></textarea>
               <div class="buttons">
-                <select name="" id="">
-                  <optgroup>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                <select>
+                  <optgroup label="JavaScript">
+                    <option value="number">JS 12000</option>
+                    <option value="separate">JS 12_000</option>
+                    <option value="exponent">JS 1.2e4</option>
                   </optgroup>
-                  <optgroup>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                  <optgroup label="JSON">
+                    <option value="">tight JSON</option>
+                    <option value="">JSON, 2 spaces</option>
+                    <option value="">JSON, 4 spaces</option>
                   </optgroup>
-                  <optgroup>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                  <optgroup label="Plain text">
+                    <option value="">text</option>
+                    <option value="">pseudotable</option>
+                  </optgroup>
+                  <optgroup label="CSV">
+                    <option value="">CSV</option>
                   </optgroup>
                 </select>
+                <button class="copy-btn">copy</button>
+                <button class="clear-btn">clear</button>
+                <button class="prev-btn">previous</button>
+                <button class="next-btn">next</button>
               </div>
             </div>
           </div>
