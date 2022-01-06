@@ -6,7 +6,7 @@ const nextButtons = document.querySelectorAll('.next-btn')
 const genBoxes = document.querySelectorAll('.do [type="checkbox"]')
 const outTextareas = document.querySelectorAll('.out>textarea')
 const timers = []
-const functions = [random, genRandIntFrom0]
+const funcs = [random, genRandIntFrom0]
 const args = Array.from(Array(outTextareas.length), () => [])
 const history = Array.from(
   Array(outTextareas.length),
@@ -15,7 +15,7 @@ const history = Array.from(
 
 for (const i in genBoxes) {
   genButtons[i].onclick = () => {
-    history[i].current = history[i].push(outTextareas[i].value = random()) - 1
+    history[i].current = history[i].push(outTextareas[i].value = funcs[i](...args[i])) - 1
   }
 
   genBoxes[i].onchange = e => {
@@ -51,6 +51,8 @@ for (const i in genBoxes) {
     stopGen(i)
   }
 }
+
+document.querySelector('.in input').oninput = e => args[1][0] = e.target.value;
 
 function toggleDarkTheme() {
   document.body.classList.toggle('dark-theme')
