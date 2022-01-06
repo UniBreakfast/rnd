@@ -1,6 +1,4 @@
-var {
-    random
-} = Math
+var {random} = Math
 
 function genRandIntFrom0(limitInt = Number.MAX_SAFE_INTEGER) {
     if (!Number.isInteger(+limitInt)) {
