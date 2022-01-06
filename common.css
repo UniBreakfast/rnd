@@ -24,10 +24,6 @@
   margin: 0;
 }
 
-html {
-  overflow: hidden;
-}
-
 body, h1, h2, h3, h4, h5, h6, fieldset, summary, textarea, input, button, select, option, ul, li, tr, th, td {
   color: var(--normal-color);
   transition: .3s, color 1s, background-color 1s;
