@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+  <title>rnd | rnd(…) is the one function for multiple cases/situations I needed a solution for to get the appropriate random value or arrays of them. You can try it IN THE CONSOLE here https://unibreakfast.github.io/rnd or try the WIP rewrite version there</title>
+  <meta name="generator" content="Jekyll v3.10.0" />
+  <meta property="og:title" content="rnd" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="description" content="rnd(…) is the one function for multiple cases/situations I needed a solution for to get the appropriate random value or arrays of them. You can try it IN THE CONSOLE here https://unibreakfast.github.io/rnd or try the WIP rewrite version there" />
+  <meta property="og:description" content="rnd(…) is the one function for multiple cases/situations I needed a solution for to get the appropriate random value or arrays of them. You can try it IN THE CONSOLE here https://unibreakfast.github.io/rnd or try the WIP rewrite version there" />
+  <link rel="canonical" href="https://unibreakfast.github.io/rnd/" />
+  <meta property="og:url" content="https://unibreakfast.github.io/rnd/" />
+  <meta property="og:site_name" content="rnd" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="twitter:title" content="rnd" />
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"rnd(…) is the one function for multiple cases/situations I needed a solution for to get the appropriate random value or arrays of them. You can try it IN THE CONSOLE here https://unibreakfast.github.io/rnd or try the WIP rewrite version there","headline":"rnd","name":"rnd","url":"https://unibreakfast.github.io/rnd/"}</script>
+  <!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="style.css">
+  <script src=rndneeds.js></script>
+  <script src=rnd.js></script>
+</head>
+
+<body>
+  <div class="container-lg px-3 my-5 markdown-body">
+
+
+    <h1 id="rnd"><a href="https://github.com/UniBreakfast/rnd">rnd</a></h1>
+
+    <h2>You CAN experiment in the console right on this page! Press <code>Ctrl + Shift + J</code></h2>
+
+    <p>The <code class="language-plaintext highlighter-rouge">rnd(...)</code> is the one function for multiple cases/situations I needed a solution for to get the appropriate random values or arrays of them.</p>
+
+    <h2 id="table-of-contents">Table of Contents:</h2>
+
+    <ul>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#usage">Usage</a>
+        <ul>
+          <li><a href="#example-0---mathrandom-shorthand">shorthand for Math.random()</a></li>
+        </ul>
+
+        <ol>
+          <li><a href="#example-group-1---integers">random integer</a></li>
+          <li><a href="#example-group-2---characters">random character from a range</a></li>
+          <li><a href="#example-group-3---dates">random date</a></li>
+          <li><a href="#example-group-4---array-elements">random array element</a></li>
+          <li><a href="#example-group-5---object-property-names">random object key by weight</a></li>
+          <li><a href="#example-group-6---boolean-with-probability">random true/false by percentage</a></li>
+          <li><a href="#example-group-7---predictably-altered-probability">predictably altered random</a></li>
+          <li><a href="#example-group-8---make-arrays-of-results">arrays of random results</a></li>
+          <li><a href="#example-group-9---preformatted-dates">preformatted dates</a></li>
+        </ol>
+      </li>
+      <li><a href="#contributing">Contributing</a></li>
+      <li><a href="#credits">Credits</a></li>
+      <li><a href="#license">License</a></li>
+    </ul>
+
+    <h2 id="installation">Installation:</h2>
+
+    <p>Take <strong><code class="language-plaintext highlighter-rouge">rnd.js</code></strong> and put it in your project’s folder and add a</p>
+
+    <p><code class="language-plaintext highlighter-rouge">&lt;script src="rnd.js"&gt;</code></p>
+
+    <p>to your html if it suits you.
+      Or you may include it from github directly with</p>
+
+    <p><code class="language-plaintext highlighter-rouge">&lt;script src="https://raw.githubusercontent.com/UniBreakfast/rnd/master/rnd.js"&gt;</code></p>
+
+    <p>And do the same for <code class="language-plaintext highlighter-rouge">rndneeds.js</code> if you’re planning to use <code class="language-plaintext highlighter-rouge">rnd(...)</code> for dates or generation of arrays of random values at one go.</p>
+
+    <p>And if you fancy import you probably don’t need instructions to <strong><code class="language-plaintext highlighter-rouge">import</code></strong> a one-function js-file.</p>
+
+    <h2 id="usage">Usage:</h2>
+
+    <h3 id="example-0---mathrandom-shorthand">Example 0 - Math.random() shorthand:</h3>
+
+    <p>The simplest usage is just a shorthand for <code class="language-plaintext highlighter-rouge">Math.random()</code> and result is similar (cause <code class="language-plaintext highlighter-rouge">Math.random</code> used internally here and in all other cases too).</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">()</span>
+    <span class="c1">// 0.06598564762879255  - random something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <h3 id="example-group-1---integers">Example group 1 - Integers:</h3>
+
+    <p>If you need a random integer from zero and up to, say, 77 you need to</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="mi">78</span><span class="p">)</span>      <span class="c1">// so it's "array element by array.length" -friendly</span>
+    <span class="c1">// 28  - random something like that</span>
+</code></pre>
+      </div>
+    </div>
+    <p>And if you need a random integer between two numbers (edge cases included) use</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="c1">// 36  - something like that (but it could be 18 or 60 just as well)</span>
+</code></pre>
+      </div>
+    </div>
+
+    <h3 id="example-group-2---characters">Example group 2 - Characters:</h3>
+
+    <p>If you need a random letter (or any character for that matter) from, say, A to Z</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="dl">"</span><span class="s2">A-Z</span><span class="dl">"</span><span class="p">)</span>
+    <span class="c1">// "Y"  - something like that (but it could be A or Z just as well)</span>
+</code></pre>
+      </div>
+    </div>
+    <p>Or, say, for Cyrillic from A to Я</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="dl">"</span><span class="s2">А-Я</span><span class="dl">"</span><span class="p">)</span>
+    <span class="c1">// "Щ"  - something like that (but it could be А or Я just as well)</span>
+</code></pre>
+      </div>
+    </div>
+    <p>Or even from ऄ to ह for some Devanagary</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="dl">"</span><span class="s2">ऄ-ह</span><span class="dl">"</span><span class="p">)</span>
+    <span class="c1">// "ळ"  - something like that (but it could be ऄ or ह just as well)</span>
+</code></pre>
+      </div>
+    </div>
+
+    <h3 id="example-group-3---dates">Example group 3 - Dates:</h3>
+
+    <p>If you just need a random date and time in an ISO-standard format pass the <code class="language-plaintext highlighter-rouge">Date</code> constructor-function itself like this</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="nb">Date</span><span class="p">)</span>
+    <span class="c1">// "1973-05-12 13:23:18"  - random something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>Output date would be in between “1970-01-01 00:00:00” (Unix Epoch Time 0 point) and your current datetime.</p>
+
+    <p>And if you don’t actually need it in that particular string format and want the Date-object itself use</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">rnd</span><span class="p">(</span><span class="nb">Date</span><span class="p">))</span>
+    <span class="c1">// "Mon Jul 11 1994 18:34:49 GMT+0300 (Восточная Европа, летнее время)"</span>
+    <span class="c1">// - that was my output, yours probably won't be with Cyrillic in it</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>You can do that with the results of the rest of the cases in this example group as well.</p>
+
+    <p>To get a random date starting not from the 1970 but from some exact date, say, January 1, 2012 and up until your current time, pass a Date instance you need as a single argument</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">2012-01-01</span><span class="dl">"</span><span class="p">))</span>
+    <span class="c1">// or simply</span>
+    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">'</span><span class="s1">2012</span><span class="dl">'</span><span class="p">))</span>
+    <span class="c1">// "2014-06-28 17:45:06"  - random something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>But if you need a random date in some particular range, say from “2000-02-20” to “2020-02-02” you should try</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">2000-02-20</span><span class="dl">"</span><span class="p">),</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">2020-02-02</span><span class="dl">"</span><span class="p">))</span>
+    <span class="c1">// "2020-01-29 12:04:08"  - random something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>And, like always with Date constructor, you can make the Date instances using different kinds of arguments</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">July 15, 1999</span><span class="dl">"</span><span class="p">),</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">))</span>
+    <span class="c1">// "2007-02-03 17:43:24"  - random something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <h3 id="example-group-4---array-elements">Example group 4 - Array elements:</h3>
+
+    <p>To get random array element just pass the array as a single argument</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">alpha</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">beta</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">delta</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">gamma</span><span class="dl">'</span><span class="p">]</span>
+    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+    <span class="c1">// "delta"  - random something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>And it can be an array of any type of elements, not just strings.</p>
+
+    <p>But with arrays of strings you can produce combinations of random elements of two arrays like this</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">orange</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">blue</span><span class="dl">'</span><span class="p">]</span>
+    <span class="o">&gt;</span> <span class="nx">shapes</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">sphere</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cube</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">pyramid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">prism</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cone</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cylinder</span><span class="dl">'</span><span class="p">]</span>
+    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="nx">colors</span><span class="p">,</span> <span class="nx">shapes</span><span class="p">)</span>
+    <span class="c1">// "green cube"  - random something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>If you try that with the arrays containing something other than strings it’ll work by naively converting selected elements to strings.</p>
+
+    <h3 id="example-group-5---object-property-names">Example group 5 - Object property names:</h3>
+
+    <p>This one is good to randomly choose one of the multitude of string values with probability weights. So in order to do that you need an object like that</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">statuses</span> <span class="o">=</span> <span class="p">{</span><span class="dl">"</span><span class="s2">never married</span><span class="dl">"</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="na">married</span><span class="p">:</span> <span class="mi">58</span><span class="p">,</span> <span class="na">divorced</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">widowed</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="nx">statuses</span><span class="p">)</span>
+    <span class="c1">// "never married"  - random something like that</span>
+    <span class="c1">// but if you run it multiple times, you'll see that "married" is returned</span>
+    <span class="c1">// more than twice as often as "never married" does, and "divorced" and</span>
+    <span class="c1">// "widowed" are much more rare outputs</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>Where keys (object properties) should be strings (if they are not valid identifiers wrap them in quotes) and values should be integers. In this example they sum up into 100, but it isn’t necessary, any numbers would do, as long as they are integers.</p>
+
+    <p>Good case I had was with an object with cities and towns of my country as keys and corresponding population as values like this <code class="language-plaintext highlighter-rouge">{Kyiv: 2709000, Kharkiv: 146000, Dnipro: 1050000, ... and other 507 of them }</code> and I needed to generate random origin of mock-user with realistic probability.</p>
+
+    <h3 id="example-group-6---boolean-with-probability">Example group 6 - Boolean with probability:</h3>
+
+    <p>If you need a random simple answer Yes or No (true/false, 1 or 0) you can pass the desired probability percentage as a parameter like that</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="mi">85</span><span class="p">,</span><span class="dl">'</span><span class="s1">%</span><span class="dl">'</span><span class="p">)</span>
+    <span class="c1">// 1  - randomly 0 (falsy) or 1 (truthy)</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>or like that</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="dl">'</span><span class="s1">14%</span><span class="dl">'</span><span class="p">)</span>
+    <span class="c1">// 0  - randomly 0 (falsy) or 1 (truthy)</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>Another hacky way to get random truthy or falsy value with desired probability would be just</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="c1">// 2  - random integer from 0 to 3</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>which for this use-case would simply mean “falsy 1 time out of 4” or the same as <code class="language-plaintext highlighter-rouge">rnd('75%')</code></p>
+
+    <p>Or, for example,</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="o">!</span><span class="nx">rnd</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="c1">// false  - inverted boolean from random integer from 0 to 9999</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>which for this use-case would simply mean “truthy 1 time out of 10000” or the same as 0,01% probability of success. And trust me, it would give the true as a result just around hundred times in a million.</p>
+
+    <h3 id="example-group-7---predictably-altered-probability">Example group 7 - Predictably altered probability:</h3>
+
+    <p>If you need to “tilt” the probability towards the lower or higher numbers use ‘lower’ or ‘higher’ as a second parameter</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="dl">'</span><span class="s1">higher</span><span class="dl">'</span><span class="p">)</span>
+    <span class="c1">// 93  - random integer with a chance of being produced linearly increasing</span>
+    <span class="c1">//        from 0 to 99</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>You can also ‘tilt’ the randomness when you ask for a random array item</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">animals</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">mouse</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rat</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cat</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dog</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">wolf</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bear</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">tiger</span><span class="dl">'</span><span class="p">]</span>
+    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="nx">animals</span><span class="p">,</span> <span class="dl">'</span><span class="s1">lower</span><span class="dl">'</span><span class="p">)</span>
+    <span class="c1">// "rat"  - random array element but the chance is linearly decreasing</span>
+    <span class="c1">//           towards the end of the list</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>You may use the ‘center’ or ‘average’ as well if you need to alter the probability towards the middle linearly or quadratically respectively.</p>
+
+    <p>You may also use the same four words (‘lower’, ‘center’, ‘higher’ or ‘average’) as a third parameter if you need to specify the range from one number to another</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span><span class="p">)</span>
+    <span class="c1">// 21  - random integer between 11 and 34 with a chance of being produced</span>
+    <span class="c1">//        linearly increasing towards the middle of the range</span>
+</code></pre>
+      </div>
+    </div>
+
+    <h3 id="example-group-8---make-arrays-of-results">Example group 8 - Make arrays of results:</h3>
+
+    <p>In many cases you may get an array of random results simply by adding an argument - integer that would be the length of the results array like that</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="nb">Date</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="c1">// ["1977-12-13 00:40:26", "2015-04-24 23:30:42",</span>
+    <span class="c1">//  "1984-07-14 09:36:42", "1992-11-20 14:15:17"] - 4 random dates</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>or</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="dl">'</span><span class="s1">ഒ-ഹ</span><span class="dl">'</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="c1">// ["ഘ", "ഞ", "മ", "ര", "ഩ", "ബ", "ഓ", "ഞ", "ഒ", "ഥ", "ത", "ഩ",</span>
+    <span class="c1">//  "ദ", "ച", "ള", "ധ", "ഭ", "ഴ", "ദ", "ല"]  - 20 random Malayan characters</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>or</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">names</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Jacob</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Jace</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Jamal</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Jennifer</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Jasmine</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Julia</span><span class="dl">'</span><span class="p">]</span>
+    <span class="o">&gt;</span> <span class="nx">surnames</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Jackson</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Jenkins</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Jefferson</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Juarez</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Jensen</span><span class="dl">'</span><span class="p">]</span>
+    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="nx">names</span><span class="p">,</span> <span class="nx">surnames</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="c1">// ["Jacob Jefferson", "Jace Juarez", "Jasmine Jensen",</span>
+    <span class="c1">//  "Jacob Juarez", "Jasmine Jenkins", "Jacob Jenkins"]  - 6 random pairs</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>or</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">({</span><span class="na">a</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="na">d</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="nx">rnd</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+    <span class="c1">// ["d", "b", "a", "a", "c", "b", "b", "a", "b", "a", "a", "b", "a", "a",</span>
+    <span class="c1">//  "a", "a", "a", "c"]  - 18 random letters with desired frequency</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>And if you need to use a combination of parameters that doesn’t produce the array of results when a number argument added last, use the bonus <code class="language-plaintext highlighter-rouge">makeArr(length, fn)</code> function for that</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">makeArr</span><span class="p">(</span> <span class="mi">10000</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="dl">'</span><span class="s1">average</span><span class="dl">'</span><span class="p">)</span> <span class="p">)</span>
+    <span class="c1">// "[13, 18, 21, 1, 16, -6, 0, 22, -23, 16, -13, -3, 2, 10, 3, 16, -14, 9,</span>
+    <span class="c1">//  -11, -18, -15, -10, 9, 3, 0, 17, 6, 21, -16, -17, 3, 16, -12, 20, 11, 7,</span>
+    <span class="c1">//  7, -5, 5, 7, -9, 5, 4, -9, -23, 15, -6, 10, -5, -10, 23, -20, 9, 23, 15,</span>
+    <span class="c1">//  12, 4, 8, 8, 25, -15, 6, -2, -6, 16, -19, 12, 3, 9, 11, -10, -15, 19, 3,</span>
+    <span class="c1">//  -20, 12, -23, 14, -24, 11, 10, 23, -15, 17, 15, -10, 9, -19, 5, -15, 9,</span>
+    <span class="c1">//  -12, -6, -24, 25, 10, 8, 22, 9, 10, ...]"  - ten thousands of random</span>
+    <span class="c1">//  integers between -25 and 25 with the higher probability of producing</span>
+    <span class="c1">//  numbers that are closer to the average - zero</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>This particular example produces the array of numbers with a frequency spread like that
+      <img src="https://raw.githubusercontent.com/UniBreakfast/rnd/master/Graph01.PNG" alt="number of results grouped and counted by value" />
+    </p>
+
+    <p>Of course you can use that <code class="language-plaintext highlighter-rouge">makeArr(length, fn)</code> function to produce arrays of values made by any function, not just as simple as shown above.</p>
+
+    <h3 id="example-group-9---preformatted-dates">Example group 9 - Preformatted dates:</h3>
+
+    <p>If you need to produce a non-specific random date with a certain format you may use the format string as a single argument</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="dl">'</span><span class="s1">the Month DDth, year YYYY</span><span class="dl">'</span><span class="p">)</span>
+    <span class="c1">// "the August 16th, year 2007" - something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>or</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">rnd</span><span class="p">(</span><span class="dl">'</span><span class="s1">month DD, HH:MM</span><span class="dl">'</span><span class="p">)</span>
+    <span class="c1">// "Oct 23, 13:10" - something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>And if you need to get the formatted datetime string with other <code class="language-plaintext highlighter-rouge">rnd(...)</code> calls you can use another bonus function <code class="language-plaintext highlighter-rouge">formatDatetime(datetime, format)</code> like that</p>
+
+    <div class="language-js highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>    <span class="o">&gt;</span> <span class="nx">formatDatetime</span><span class="p">(</span> <span class="nx">rnd</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">1997-10</span><span class="dl">"</span><span class="p">),</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">2001-10</span><span class="dl">"</span><span class="p">)),</span>
+                      <span class="dl">'</span><span class="s1">DD.MM.YYYY</span><span class="dl">'</span><span class="p">)</span>
+    <span class="c1">// "27.08.2000" - something like that</span>
+</code></pre>
+      </div>
+    </div>
+
+    <p>The supported formatting tokens are:</p>
+
+    <ul>
+      <li>YYYY - 4-digit year like 1962</li>
+      <li>YY - 2-digit year like 99</li>
+      <li>MM - 2-digit month like 12</li>
+      <li>Month - month name like January</li>
+      <li>month - short month name like Feb</li>
+      <li>DD - 2-digit date like 08</li>
+      <li>DDth - up to 2digit date like 7th, 21st etc</li>
+      <li>HH, MM, SS - 2-digit hours, minutes and seconds</li>
+    </ul>
+
+    <h2 id="contributing">Contributing:</h2>
+
+    <p>Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to my work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors.</p>
+
+    <h2 id="credits">Credits:</h2>
+
+    <p>Well, “it was me all along”. For now.</p>
+
+    <h2 id="license">License:</h2>
+
+    <p>This is free and unencumbered software released into the public domain.</p>
+
+    <p>Anyone is free to copy, modify, publish, use, compile, sell, or
+      distribute this software, either in source code form or as a compiled
+      binary, for any purpose, commercial or non-commercial, and by any
+      means.</p>
+
+    <p>In jurisdictions that recognize copyright laws, the author or authors
+      of this software dedicate any and all copyright interest in the
+      software to the public domain. We make this dedication for the benefit
+      of the public at large and to the detriment of our heirs and
+      successors. We intend this dedication to be an overt act of
+      relinquishment in perpetuity of all present and future rights to this
+      software under copyright law.</p>
+
+    <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+      EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+      MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+      IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+      OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+      ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+      OTHER DEALINGS IN THE SOFTWARE.</p>
+
+    <p>For more information, please refer to <a href="http://unlicense.org">unlicense.org</a></p>
+
+
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+  <script>anchors.add();</script>
+</body>
+
+</html>
